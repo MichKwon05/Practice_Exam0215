@@ -1,0 +1,52 @@
+<div th:replace="~{template::template(~{::content})}">
+    <div th:fragment="content">
+        <h3>Registro</h3>
+        <form class="row g-3" th:action="@{/registro}" method="post" th:object="${user}">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="name" class="form-label">Nombre: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" required maxlength="20" type="text" th:field="*{name}">
+                <div class="invalid-feedback" th:errors="*{name}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="surname" class="form-label">Primer apellido: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('surname') ? 'is-invalid' : ''}" required maxlength="30" type="text" th:field="*{surname}">
+                <div class="invalid-feedback" th:errors="*{surname}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="lastname" class="form-label">Segundo apellido:</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('lastname') ? 'is-invalid' : ''}" maxlength="30" type="text" th:field="*{lastname}">
+                <div class="invalid-feedback" th:errors="*{lastname}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="rfc" class="form-label">RFC: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('rfc') ? 'is-invalid' : ''}" required minlength="12" maxlength="13" type="text" th:field="*{rfc}">
+                <div class="invalid-feedback" th:errors="*{rfc}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="phone" class="form-label">Teléfono: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('phone') ? 'is-invalid' : ''}" required minlength="10" maxlength="10" type="text" th:field="*{phone}">
+                <div class="invalid-feedback" th:errors="*{phone}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="email" class="form-label">Correo: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('email') ? 'is-invalid' : ''}" required maxlength="30" type="email" th:field="*{email}">
+                <div class="invalid-feedback" th:errors="*{email}"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label for="password" class="form-label">Contraseña: *</label>
+                <input class="form-control" th:classappend="${#fields.hasErrors('password') ? 'is-invalid' : ''}" required maxlength="8" type="password" th:field="*{password}">
+                <div class="invalid-feedback" th:errors="*{password}"></div>
+            </div>
+            <div class="col-12">
+                <div class="row g-3 justify-content-end">
+                    <div class="col-auto">
+                        <button class="btn btn-secondary" type="submit">Cancelar</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success" type="submit">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

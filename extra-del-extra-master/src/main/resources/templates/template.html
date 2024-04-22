@@ -1,0 +1,70 @@
+<th:block th:fragment="template(content)">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Extra del extra</title>
+        <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/assets/css/notyf.min.css}">
+        <link rel="stylesheet" th:href="@{/assets/css/fontawesome.min.css}">
+        <link rel="stylesheet" th:href="@{/assets/css/sweetalert2.min.css}">
+
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg bg-white shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/capturistas}">Capturistas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/clientes}">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/pedidos}">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/productos}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/registro}">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/bitacora}">Bitácora</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/logout}">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <div th:replace="${content}"></div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/js/notyf.min.js}"></script>
+    <script th:src="@{/assets/js/sweetalert2.all.min.js}"></script>
+    <script>
+        const notyf = new Notyf()
+    </script>
+    <script th:if="${successMessage}">
+        notyf.success('[[${successMessage}]]')
+    </script>
+    <script th:if="${errorMessage}">
+        notyf.error('[[${errorMessage}]]')
+    </script>
+    </body>
+    </html>
+</th:block>

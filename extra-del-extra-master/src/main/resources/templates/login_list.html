@@ -1,0 +1,25 @@
+<div th:replace="~{template::template(~{::content})}">
+    <div th:fragment="content">
+        <h3>Bitácora de accesos</h3>
+        <div class="table-responsive">
+            <table class="table table-striped text-center">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de usuario</th>
+                    <th>Dirección IP</th>
+                    <th>Fecha</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="login : ${logins}" th:object="${login}">
+                    <td th:text="*{id}"/>
+                    <td th:text="*{username}"/>
+                    <td th:text="*{ipAddress}"/>
+                    <td th:text="*{date}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
