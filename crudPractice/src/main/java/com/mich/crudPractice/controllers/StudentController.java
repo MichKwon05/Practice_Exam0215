@@ -25,10 +25,11 @@ public class StudentController {
         model.addAttribute("students", studentService.getAll().getData());
         return "students";
     }
+
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("student", new Student());
-        return "register";
+        model.addAttribute("student", new StudentDto()); // Usar StudentDto para el formulario
+        return "register"; // Devolver la vista "register.html"
     }
 
     @GetMapping("/active")
@@ -58,11 +59,10 @@ public class StudentController {
     @PostMapping("/create")
     public String createStudent(@ModelAttribute("student") StudentDto studentDto) {
         studentService.insert(studentDto.getStudent());
-        return "redirect:/api/students/list";
+        return "redirect:/api/students/list"; // Redireccionar a la lista de estudiantes después de agregar
     }
 
-
-    @PutMapping("/update")
+    @PostMapping("/update")
     public String updateStudent(@ModelAttribute("student") StudentDto studentDto) {
         CustomResponse<Student> response = studentService.update(studentDto.getStudent());
         if (!response.isError()) {
@@ -72,7 +72,6 @@ public class StudentController {
             return "redirect:/api/students/list";
         }
     }
-
 
     @GetMapping("/delete/{id}")
     public String deleteStudent(@PathVariable("id") Long id) {
