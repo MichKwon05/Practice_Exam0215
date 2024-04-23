@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -10,9 +10,7 @@
     <h1>Home</h1>
     <ul>
         <li><a href="/">Index</a></li>
-        <li><a href="/lis">Home</a></li>
-        <li><a href="/form">Form</a></li>
-        <li><a href="/peliculas/index">Menu Peliculas</a></li>
+        <li><a href="/list-student">Students</a></li>
     </ul>
     <form th:action="@{/logout}" method="post">
         <button type="submit">Cerrar</button>
